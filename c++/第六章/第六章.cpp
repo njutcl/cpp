@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+class Shape{
+	public:
+	virtual float printArea() const{
+		return 0.0;
+	}	
+	virtual void shapeName()const=0;
+};
+class Circle:public Shape{
+  public:  
+  Circle(float r):radius(r){
+  	
+  };
+  virtual float printArea()const;
+		virtual void shapeName()	const{
+			cout<<"Circle:";
+		}
+  protected:
+  float radius;	
+};
+
+float Circle::printArea()const{
+		cout<<3.14*radius*radius<<endl;
+	
+}
+class Rectangle:public Shape	{
+  public:
+  Rectangle(float h,float w):height(h),width(w){
+  	
+  };
+   virtual float printArea()const;
+		virtual void shapeName() const{
+				cout<<"Rectangle:";
+		};	
+  protected:
+  float height;		
+  float width;
+};
+
+	float Rectangle	::printArea() const{
+		cout<<height*width<<endl;
+	};
+class Triangle:public Shape	   {
+	public:
+   Triangle (float h,float b):height(h),bottom(b){
+   	
+   };   
+    virtual float printArea()const;
+	virtual void shapeName()const{
+				cout<<"Triangle:";
+		};	
+   protected:
+  float height;		
+  float bottom;
+  };
+
+  float Triangle::printArea() const{
+		cout<<height*bottom*0.5<<endl;
+	}	
+int main(){
+	Triangle tri(5.5,4.5);
+	Rectangle rec(3,7);
+	Circle cir(6);
+	Shape *pt;
+	pt=&cir;
+	pt->shapeName(); 
+	pt->printArea();
+		pt=&rec;
+	pt->shapeName(); 
+	pt->printArea();
+		pt=&tri;
+	pt->shapeName(); 
+	pt->printArea();
+
+	
+return 0;	
+}
